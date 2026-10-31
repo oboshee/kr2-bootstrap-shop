@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Товар – Bootstrap Shop</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/custom.css">
+</head>
+<body class="bg-light">
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Bootstrap Shop</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNavbar">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Главная</a></li>
+                    <li class="nav-item"><a class="nav-link" href="catalog.html">Каталог</a></li>
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="product.html">Товар</a></li>
+                    <li class="nav-item"><a class="nav-link" href="order.html">Заявка</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container my-5">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Главная</a></li>
+                <li class="breadcrumb-item"><a href="catalog.html">Каталог</a></li>
+                <!-- Сюда тоже будет подставляться название -->
+                <li class="breadcrumb-item active" aria-current="page" id="breadcrumb-title">Товар</li>
+            </ol>
+        </nav>
+
+        <div class="row g-4 mb-5">
+            <div class="col-12 col-lg-6">
+                <div class="card shadow-sm">
+                    <div class="placeholder-image rounded">
+                        <span class="text-muted">Изображение товара</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-6">
+                <span class="badge bg-success mb-3">Новинка</span>
+                <!-- Добавлены id для JS -->
+                <h1 class="h2" id="product-title">Товар 1</h1>
+                <p class="lead text-muted" id="product-desc">Подробное описание учебного товара для страницы карточки.</p>
+                <p class="fs-3 fw-bold" id="product-price">1000 руб.</p>
+                <div class="d-flex gap-2 mb-4">
+                    <a class="btn btn-primary btn-lg" href="order.html">Оформить заявку</a>
+                    <a class="btn btn-outline-secondary btn-lg" href="catalog.html">Назад в каталог</a>
+                </div>
+                <div class="alert alert-warning" role="alert">
+                    Это учебная карточка товара. Данные используются для демонстрации Bootstrap-компонентов.
+                </div>
+            </div>
+        </div>
+
+        <section class="mb-5">
+            <h2 class="h4 mb-3">Характеристики</h2>
+            <div class="table-responsive">
+                <table class="table table-striped table-bordered align-middle bg-white">
+                    <tbody>
+                        <tr><th>Артикул</th><td>001-ABC</td></tr>
+                        <tr><th>Вес</th><td>1 кг</td></tr>
+                        <tr><th>Гарантия</th><td>12 месяцев</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="h4 mb-3">Частые вопросы</h2>
+            <div class="accordion" id="faqAccordion">
+                <div class="accordion-item">
+                    <h3 class="accordion-header">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
+                            Условия доставки
+                        </button>
+                    </h3>
+                    <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Доставка осуществляется курьерской службой в течение 3 рабочих дней.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h3 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
+                            Способы оплаты
+                        </button>
+                    </h3>
+                    <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Принимаются банковские карты, а также оплата при получении.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Блок с JavaScript для подгрузки данных -->
+    <script>
+        // База данных товаров (соответствует каталогу)
+        const products = {
+            '1': { title: 'Товар 1', price: '1000 руб.', desc: 'Подробное описание первого учебного товара для страницы карточки.' },
+            '2': { title: 'Товар 2', price: '1500 руб.', desc: 'Подробное описание второго учебного товара для страницы карточки.' },
+            '3': { title: 'Товар 3', price: '2000 руб.', desc: 'Подробное описание третьего учебного товара для страницы карточки.' },
+            '4': { title: 'Товар 4', price: '2500 руб.', desc: 'Подробное описание четвертого учебного товара для страницы карточки.' },
+            '5': { title: 'Товар 5', price: '3000 руб.', desc: 'Подробное описание пятого учебного товара для страницы карточки.' },
+            '6': { title: 'Товар 6', price: '3500 руб.', desc: 'Подробное описание шестого учебного товара для страницы карточки.' }
+        };
+
+        // Получаем ID из ссылки (например, product.html?id=2)
+        const urlParams = new URLSearchParams(window.location.search);
+        const productId = urlParams.get('id') || '1'; // По умолчанию 1-й товар
+
+        // Если товар с таким ID существует, подставляем данные
+        if (products[productId]) {
+            document.getElementById('product-title').textContent = products[productId].title;
+            document.getElementById('product-desc').textContent = products[productId].desc;
+            document.getElementById('product-price').textContent = products[productId].price;
+            document.getElementById('breadcrumb-title').textContent = products[productId].title;
+            
+            // Меняем заголовок вкладки браузера
+            document.title = products[productId].title + ' – Bootstrap Shop';
+        }
+    </script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
